@@ -11,7 +11,7 @@ public class App
     public static void main( String[] args )
     {
     	Utils utils = new Utils();
-    	List<Bank> banki = utils.stworzListeBankow();
+    	List<Bank> banki = utils.stworzDomyslnaListeBankow();
     	//TODO refactor
     	//wyliczyć sumę stanu kont każdego banku
     	System.out.println("Wyświetlenie danych klientów ");

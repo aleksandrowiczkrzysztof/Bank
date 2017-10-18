@@ -15,6 +15,11 @@ public class Bank {
 	public String getNazwaBanku() {
 		return nazwaBanku;
 	}
+	public Bank(List<Klient> klienci, String nazwaBanku) {
+		super();
+		this.klienci = klienci;
+		this.nazwaBanku = nazwaBanku;
+	}
 	public void setNazwaBanku(String nazwaBanku) {
 		this.nazwaBanku = nazwaBanku;
 	}

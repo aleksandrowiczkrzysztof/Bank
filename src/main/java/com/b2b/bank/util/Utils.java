@@ -16,60 +16,44 @@ public class Utils {
 
 	public String nazwiskoKlienta() {
 		return "nazwisko";
+
 	}
 
-	public List<Bank> stworzListeBankow() {
-		List<Bank> banki = new ArrayList<Bank>();
-		boolean czyTworzycBank = true;
-		do {
-			System.out.println("Czy stworzyć bank?");
-			czyTworzycBank = scanner.nextBoolean();
-			if (czyTworzycBank) {
-				Bank bank = new Bank();
-				System.out.println("Podaj nazwe banku");
-				String nazwaBanku = scanner.next();
-				bank.setNazwaBanku(nazwaBanku);
-				System.out.println("uzupełnij klientów bankow");
-				bank.setKlienci(stworzListeKlientow());
-				banki.add(bank);
-			}
-		} while (czyTworzycBank);
-
+	public List<Bank> stworzDomyslnaListeBankow() {
+		List<Bank> banki = new ArrayList<>();
+		List<Klient> klienci = stworzDomyslnaListeKlientowMillenium();
+		banki.add(new Bank(klienci, "Millenium"));
+		List<Klient> klienciPko = stworzDomyslnaListeKlientowBankPKO();
+		banki.add(new Bank(klienciPko, "Bank PKO"));
 		return banki;
 	}
 
-	public List<Klient> stworzListeKlientow() {
-		List<Klient> klienci = new ArrayList<Klient>();
-		boolean czyTworzycKlienta = true;
-		
-		do {
-			System.out.println("Czy stworzyć klienta?");
-			czyTworzycKlienta = scanner.nextBoolean();
-			if (czyTworzycKlienta) {
-				Klient klient = new Klient();
-				System.out.println("Podaj imię klienta");// warunek imie nie
-															// moze zaczynac sie
-															// od cyfry;
-				String imie = scanner.next();
-				
-				klient.setImie(imie);
-				System.out.println("Podaj nazwisko klienta");
-				String nazwisko = scanner.next();
-				klient.setNazwisko(nazwisko);
-				System.out.println("Podaj rok urodzenia klienta");
-				int rokUrodzenia = scanner.nextInt();
-				
-				klient.setRokUrodzenia(rokUrodzenia);
-				System.out.println("Podaj stan konta");
-				double stanKonta = scanner.nextDouble();
-				klient.setStanKonta(stanKonta);
-				klienci.add(klient);
-			}
-		} while (czyTworzycKlienta);
+	public List<Klient> stworzDomyslnaListeKlientowBankPKO() {
+		List<Klient> klienciPko = new ArrayList<>();
+		Klient janek = new Klient( "Kowalska", 153.40);
+		janek.setRokUrodzenia(1984);
+		janek.setImie("Ania");
+		klienciPko.add(janek);
+		Klient piotrus = new Klient( "Kowal", 153.20);
+		piotrus.setImie("Jan");
+		piotrus.setRokUrodzenia(2005);
+		klienciPko.add(piotrus);
+
+		return klienciPko;
+
+	}
+	public List<Klient> stworzDomyslnaListeKlientowMillenium() {
+		List<Klient> klienci = new ArrayList<>();
+		Klient janek = new Klient( "Kowalski", 153.40);
+		janek.setImie("Grazyna");
+		janek.setRokUrodzenia(1984);
+		klienci.add(janek);
+		Klient piotrus = new Klient( "Malek", 53.20);
+		piotrus.setImie("To");
+		piotrus.setRokUrodzenia(2005);
+		klienci.add(piotrus);
 
 		return klienci;
-	}
 
-	
-
+}
 }
